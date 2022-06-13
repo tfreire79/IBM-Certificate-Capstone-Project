@@ -14,6 +14,12 @@ min_payload = spacex_df['Payload Mass (kg)'].min()
 # Create a dash application
 app = dash.Dash(__name__)
 
+launch_sites = []
+launch_sites.append({'label': 'All Sites', 'value': 'All Sites'})
+for launch_site in spacex_df['Launch Site'].unique().tolist():
+    launch_sites.append({'label': launch_site, 'value': launch_site})
+
+
 # Create an app layout
 app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
                                         style={'textAlign': 'center', 'color': '#503D36',
